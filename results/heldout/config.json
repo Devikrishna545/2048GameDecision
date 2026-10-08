@@ -1,0 +1,15 @@
+{
+  "agents": [
+    "laya_lora",
+    "laya",
+    "greedy",
+    "random"
+  ],
+  "games": 5,
+  "seed_base": 2048,
+  "max_moves": 5000,
+  "run_id": "heldout",
+  "quiet": false,
+  "jev_budget": 3.0,
+  "win_tile": 2048
+}

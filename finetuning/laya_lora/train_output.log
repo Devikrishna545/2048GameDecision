@@ -1,0 +1,49 @@
+train 8111  val 366 (game 19)
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 2326.55it/s]
+/Users/devikrishna/Desktop/2048-jev-vs-laya/.venv/lib/python3.12/site-packages/laya/agent.py:2110: RuntimeWarning: laya: this checkpoint ships invalid temperatures or values outside [0.5, 5]; using choice:11+=0.10058280825614929 -> 0.5. Treat confidence from the affected entries as uncalibrated.
+  return Agent(model_id_or_path, device=device, token=token, subfolder=subfolder, fast=fast,
+trainable params 8.25M of 428M
+val accuracy before training: 0.541 (22s)
+epoch 1 batch 50/2028 loss 0.995 1.27s/batch
+epoch 1 batch 100/2028 loss 0.642 1.26s/batch
+epoch 1 batch 150/2028 loss 0.514 1.26s/batch
+epoch 1 batch 200/2028 loss 0.363 1.26s/batch
+epoch 1 batch 250/2028 loss 0.271 1.26s/batch
+epoch 1 batch 300/2028 loss 0.304 1.26s/batch
+epoch 1 batch 350/2028 loss 0.332 1.26s/batch
+epoch 1 batch 400/2028 loss 0.273 1.26s/batch
+epoch 1 batch 450/2028 loss 0.222 1.26s/batch
+epoch 1 batch 500/2028 loss 0.287 1.27s/batch
+epoch 1 batch 550/2028 loss 0.260 1.27s/batch
+epoch 1 batch 600/2028 loss 0.217 1.26s/batch
+epoch 1 batch 650/2028 loss 0.214 1.26s/batch
+epoch 1 batch 700/2028 loss 0.266 1.26s/batch
+epoch 1 batch 750/2028 loss 0.305 1.27s/batch
+epoch 1 batch 800/2028 loss 0.192 1.26s/batch
+epoch 1 batch 850/2028 loss 0.229 1.26s/batch
+epoch 1 batch 900/2028 loss 0.269 1.26s/batch
+epoch 1 batch 950/2028 loss 0.258 1.26s/batch
+epoch 1 batch 1000/2028 loss 0.243 1.26s/batch
+epoch 1 done, val accuracy 0.885
+epoch 2 batch 1050/2028 loss 0.203 1.29s/batch
+epoch 2 batch 1100/2028 loss 0.185 1.28s/batch
+epoch 2 batch 1150/2028 loss 0.189 1.28s/batch
+epoch 2 batch 1200/2028 loss 0.203 1.28s/batch
+epoch 2 batch 1250/2028 loss 0.157 1.28s/batch
+epoch 2 batch 1300/2028 loss 0.205 1.28s/batch
+epoch 2 batch 1350/2028 loss 0.198 1.28s/batch
+epoch 2 batch 1400/2028 loss 0.173 1.28s/batch
+epoch 2 batch 1450/2028 loss 0.174 1.28s/batch
+epoch 2 batch 1500/2028 loss 0.175 1.28s/batch
+epoch 2 batch 1550/2028 loss 0.115 1.28s/batch
+epoch 2 batch 1600/2028 loss 0.170 1.28s/batch
+epoch 2 batch 1650/2028 loss 0.152 1.28s/batch
+epoch 2 batch 1700/2028 loss 0.182 1.28s/batch
+epoch 2 batch 1750/2028 loss 0.133 1.28s/batch
+epoch 2 batch 1800/2028 loss 0.153 1.28s/batch
+epoch 2 batch 1850/2028 loss 0.159 1.28s/batch
+epoch 2 batch 1900/2028 loss 0.188 1.28s/batch
+epoch 2 batch 1950/2028 loss 0.179 1.28s/batch
+epoch 2 batch 2000/2028 loss 0.171 1.28s/batch
+epoch 2 done, val accuracy 0.943
+saved /Users/devikrishna/Desktop/2048-jev-vs-laya/finetuning/laya_lora/adapter.pt

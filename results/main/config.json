@@ -1,0 +1,12 @@
+{
+  "agents": [
+    "jev"
+  ],
+  "games": 20,
+  "seed_base": 2048,
+  "max_moves": 5000,
+  "run_id": "main",
+  "quiet": false,
+  "jev_budget": 2.5,
+  "win_tile": 2048
+}

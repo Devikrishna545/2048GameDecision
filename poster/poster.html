@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jev vs Laya 2048</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8ef;
+    --ink: #2b2620;
+    --muted: #7a7064;
+    --line: #e4ddcc;
+    --card: #ffffff;
+    --jev: #1f7a8c;
+    --laya: #a39a8c;
+    --lora: #f2913d;
+    --rule: #4a5568;
+    --random: #d6cfc2;
+    --gold: #edc22e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; background: var(--bg); }
+  body { font-family: Inter, -apple-system, Helvetica, sans-serif; color: var(--ink); padding: 54px 68px 44px; display: flex; flex-direction: column; }
+
+  .eyebrow { display: flex; align-items: center; gap: 14px; font: 600 19px Inter; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .tile { width: 46px; height: 46px; border-radius: 8px; background: var(--gold); color: #fff; font: 700 15px "Space Grotesk"; display: grid; place-items: center; letter-spacing: 0; }
+  h1 { font: 700 54px/1.06 "Space Grotesk", sans-serif; letter-spacing: -.02em; margin-top: 18px; }
+  h1 em { font-style: normal; color: var(--lora); }
+  .sub { font-size: 22px; line-height: 1.4; color: var(--muted); margin-top: 14px; max-width: 900px; }
+
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px 30px 18px; margin-top: 24px; }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+  .round { font: 700 25px "Space Grotesk"; }
+  .round span { color: var(--muted); font-weight: 500; }
+  .note { font-size: 16px; color: var(--muted); }
+
+  .row { display: grid; grid-template-columns: 205px 1fr; align-items: center; gap: 16px; margin: 9px 0; }
+  .name { font-size: 20px; font-weight: 600; }
+  .name small { display: block; font-size: 14px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+  .track { position: relative; height: 38px; }
+  .bar { height: 100%; border-radius: 8px; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; font: 700 19px "Space Grotesk"; color: #fff; }
+  .bar.light { color: var(--ink); }
+  .outside { position: absolute; top: 0; height: 100%; display: flex; align-items: center; font: 700 19px "Space Grotesk"; padding-left: 12px; color: var(--ink); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; }
+  .big { font: 700 40px/1 "Space Grotesk"; }
+  .stat p { font-size: 15.5px; line-height: 1.35; color: var(--muted); margin-top: 10px; }
+
+  .takeaway { margin-top: 24px; background: var(--ink); color: #fff; border-radius: 16px; padding: 20px 26px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; }
+  .takeaway .label { font: 700 15px Inter; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .takeaway p { font-size: 20px; line-height: 1.4; }
+  .takeaway b { color: var(--lora); font-weight: 600; }
+  footer { margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+  footer b { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="eyebrow"><div class="tile">2048</div>AI decision models, tested on a game</div>
+  <h1>Can a decision model play 2048?<br><em>Jev vs Laya</em>, before and after tuning</h1>
+  <p class="sub">Each model got the board and what every move would do, then picked a move. Average final score per game, higher is better.</p>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="round">Round 1 <span>· out of the box</span></div>
+      <div class="note">same 20 boards for everyone</div>
+    </div>
+    <div class="row"><div class="name">Corner rule<small>hand-written baseline</small></div><div class="track"><div class="bar" style="width:82.7%;background:var(--rule)">3,721</div></div></div>
+    <div class="row"><div class="name">Jev<small>hosted API</small></div><div class="track"><div class="bar" style="width:68.6%;background:var(--jev)">3,088</div></div></div>
+    <div class="row"><div class="name">Laya<small>open weights, local</small></div><div class="track"><div class="bar" style="width:25.6%;background:var(--laya)">1,151</div></div></div>
+    <div class="row"><div class="name">Random moves</div><div class="track"><div class="bar light" style="width:24.3%;background:var(--random)">1,094</div></div></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="round">Round 2 <span>· Laya after a LoRA fine-tune</span></div>
+      <div class="note">20 new boards no model had seen</div>
+    </div>
+    <div class="row"><div class="name">Corner rule<small>hand-written baseline</small></div><div class="track"><div class="bar" style="width:99.6%;background:var(--rule)">4,484</div></div></div>
+    <div class="row"><div class="name">Fine-tuned Laya<small>45 min on a laptop</small></div><div class="track"><div class="bar" style="width:83.3%;background:var(--lora)">3,747</div></div></div>
+    <div class="row"><div class="name">Original Laya</div><div class="track"><div class="bar" style="width:31%;background:var(--laya)">1,393</div></div></div>
+    <div class="row"><div class="name">Random moves</div><div class="track"><div class="bar light" style="width:25.2%;background:var(--random)">1,133</div></div></div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="big" style="color:var(--jev)">17 / 20</div><p>boards where Jev outscored original Laya</p></div>
+    <div class="stat"><div class="big" style="color:var(--lora)">2.7×</div><p>Laya's score after fine-tuning; beat the original on 19 of 20 boards</p></div>
+    <div class="stat"><div class="big">94 ms</div><p>per move for Laya on a laptop, vs 1.2 s for Jev's API</p></div>
+    <div class="stat"><div class="big">0</div><p>games reached the 2048 tile, for any player</p></div>
+  </div>
+
+  <div class="takeaway"><div class="label">Takeaway</div><p>Start with a hosted model, <b>log its decisions</b>, then fine-tune an open model on them: <b>10× faster, $0 per call</b>. The student only gets as good as its teacher.</p></div>
+
+  <footer>
+    <b>Setup:</b> seeded 2048 engine, identical boards for every player. Laya was LoRA fine-tuned to imitate ~8,100 moves by Jev and the corner rule, then tested on boards it never trained on. Jev did not play Round 2, so this is not a direct Jev vs fine-tuned Laya result. Jev API cost: $1.52; Laya runs free.
+  </footer>
+</body>
+</html>
